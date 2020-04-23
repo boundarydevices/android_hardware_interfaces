@@ -17,6 +17,7 @@
 #include "SurfaceFlingerConfigs.h"
 
 #include <android/hardware/configstore/1.1/types.h>
+#include <cutils/properties.h>
 #include <log/log.h>
 
 namespace android {
@@ -160,6 +161,13 @@ Return<void> SurfaceFlingerConfigs::primaryDisplayOrientation(
 #ifdef PRIMARY_DISPLAY_ORIENTATION
     specified = true;
     orientation = PRIMARY_DISPLAY_ORIENTATION;
+#else
+    int hwrotation = property_get_int32("ro.boot.hwrotation", -1);
+    if ((hwrotation == 0) || (hwrotation == 90) ||
+        (hwrotation == 180) || (hwrotation == 270)) {
+        specified = true;
+        orientation = hwrotation;
+    }
 #endif
 
     switch (orientation) {
