@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+#define LOG_TAG "libhealthloop"
+
+#include <cutils/klog.h>
+#include <cutils/properties.h>
 #include <health/utils.h>
 namespace android {
 namespace hardware {
@@ -26,12 +30,17 @@ namespace health {
 
 void InitHealthdConfig(struct healthd_config* healthd_config) {
     *healthd_config = {
-            .periodic_chores_interval_fast = DEFAULT_PERIODIC_CHORES_INTERVAL_FAST,
-            .periodic_chores_interval_slow = DEFAULT_PERIODIC_CHORES_INTERVAL_SLOW,
+            .periodic_chores_interval_fast = property_get_int32("ro.vendor.health.interval.fast",
+                                                                DEFAULT_PERIODIC_CHORES_INTERVAL_FAST),
+            .periodic_chores_interval_slow = property_get_int32("ro.vendor.health.interval.slow",
+                                                                DEFAULT_PERIODIC_CHORES_INTERVAL_SLOW),
             .energyCounter = NULL,
             .boot_min_cap = 0,
             .screen_on = NULL,
     };
+    KLOG_INFO(LOG_TAG, "periodic chores fast %ds slow %ds\n",
+              healthd_config->periodic_chores_interval_fast,
+              healthd_config->periodic_chores_interval_slow);
 }
 
 }  // namespace health
