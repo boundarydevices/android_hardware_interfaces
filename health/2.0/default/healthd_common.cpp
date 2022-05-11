@@ -22,6 +22,7 @@
 
 #include <batteryservice/BatteryService.h>
 #include <cutils/klog.h>
+#include <cutils/properties.h>
 #include <cutils/uevent.h>
 #include <errno.h>
 #include <libgen.h>
@@ -245,6 +246,15 @@ static int healthd_init() {
     }
 
     healthd_mode_ops->init(&healthd_config);
+    healthd_config.periodic_chores_interval_fast =
+	    property_get_int32("ro.vendor.health.interval.fast",
+			       DEFAULT_PERIODIC_CHORES_INTERVAL_FAST);
+    healthd_config.periodic_chores_interval_slow =
+	    property_get_int32("ro.vendor.health.interval.slow",
+			       DEFAULT_PERIODIC_CHORES_INTERVAL_SLOW);
+    KLOG_INFO(LOG_TAG, "periodic chores fast %ds slow %ds\n",
+              healthd_config.periodic_chores_interval_fast,
+              healthd_config.periodic_chores_interval_slow);
     wakealarm_init();
     uevent_init();
 
