@@ -40,6 +40,7 @@
 #include <ui/GraphicBufferAllocator.h>
 #include <regex>
 #include <typeinfo>
+#include <nativebase/nativebase.h>
 #include "utils/Errors.h"
 #include <nativebase/nativebase.h>
 
