@@ -18,7 +18,7 @@ apex {
     vendor: true,
 
     binaries: [
-        "android.hardware.audio.service-aidl.example",
+        "android.hardware.audio.service-aidl.imx",
         "android.hardware.audio.effect.service-aidl.example",
     ],
     native_shared_libs: [
@@ -44,8 +44,8 @@ apex {
         "libvolumesw",
     ],
     prebuilts: [
-        "android.hardware.audio.service-aidl.example.rc",
-        "android.hardware.audio.service-aidl.xml",
+        "android.hardware.audio.service-aidl.imx.rc",
+        "android.hardware.audio.service-aidl.imx.xml",
         "android.hardware.bluetooth.audio.xml",
     ],
 }
