@@ -133,6 +133,12 @@ class SocketInterface : public ot::Spinel::SpinelInterface,
     uint32_t GetBusSpeed(void) const { return 1000000; }
 
     /**
+     * This method sets the bus speed between the host and the radio.
+     *
+     */
+    void SetBusSpeed(uint32_t aSpeed) override { OT_UNUSED_VARIABLE(aSpeed); }
+
+    /**
      * Hardware resets the RCP.
      *
      * @retval OT_ERROR_NONE            Successfully reset the RCP.
