@@ -109,6 +109,5 @@ apex {
     ],
     prebuilts: [
         "secretkeeper.rc",
-        "secretkeeper.xml",
     ],
 }

@@ -43,7 +43,7 @@ fn main() {
 
     let service = SecretkeeperService::new_as_binder(sk_channel, ag_channel);
     let service_name = format!(
-        "{}/nonsecure",
+        "{}/default",
         <BpSecretkeeper as ISecretkeeper>::get_descriptor()
     );
     binder::add_service(&service_name, service.as_binder()).unwrap_or_else(|e| {
