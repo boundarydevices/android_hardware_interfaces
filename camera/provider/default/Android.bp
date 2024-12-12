@@ -118,6 +118,9 @@ cc_defaults {
         "android.hardware.camera.common@1.0-helper",
     ],
     include_dirs: [
+        "vendor/nxp-opensource/imx/include",
+        "vendor/nxp-opensource/imx/image_process",
+        "vendor/nxp-opensource/imx/opencl-2d",
         "frameworks/native/headers/media_plugin",
     ],
 }
