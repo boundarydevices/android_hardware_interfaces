@@ -57,6 +57,7 @@ cc_library_shared {
         "vendor/nxp-opensource/imx/include",
         "vendor/nxp-opensource/imx/image_process",
         "vendor/nxp-opensource/imx/opencl-2d",
+        "vendor/nxp/imx_opencl_converter/ghdr",
         "frameworks/native/headers/media_plugin",
     ],
     shared_libs: [
@@ -119,6 +120,7 @@ cc_defaults {
         "vendor/nxp-opensource/imx/include",
         "vendor/nxp-opensource/imx/image_process",
         "vendor/nxp-opensource/imx/opencl-2d",
+        "vendor/nxp/imx_opencl_converter/ghdr",
         "frameworks/native/headers/media_plugin",
     ],
 }
